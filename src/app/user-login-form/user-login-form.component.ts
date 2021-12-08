@@ -25,10 +25,12 @@ ngOnInit(): void {
 loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
   // Logic for a successful user login goes here! (To be implemented)
-     this.dialogRef.close(); // This will close the modal on success!
-     this.snackBar.open(response, 'OK', {
-        duration: 2000
-     });
+    this.dialogRef.close(); // This will close the modal
+    localStorage.setItem('token', response.token);
+    localStorage.setItem('user', JSON.stringify(response.user));
+    this.snackBar.open(response, 'OK', {
+      duration: 2000
+      });
     }, (response) => {
       this.snackBar.open(response, 'OK', {
         duration: 2000
