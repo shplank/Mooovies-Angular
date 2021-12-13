@@ -82,9 +82,9 @@ export class FetchApiDataService {
       catchError(this.handleError));
     }
 
-  // api call for profile view with favorites
-  public getProfile(Username: string): Observable<any> {
-    return this.http.get(apiUrl + '/users/' + Username, headers)
+  // api call for getting user data, including favorites
+  public getUser(Username: string): Observable<any> {
+    return this.http.get(apiUrl + `users/${Username}`, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }

@@ -1,0 +1,32 @@
+<div class="navbar">
+  <div class="home-button">
+    <button mat-flat-button (click)="toFilms()" >
+      <img src="assets/MoooviesLogo.png" width="80px" alt="Mooovies logo" />
+    </button>
+    <button mat-flat-button (click)="toFilms()" >
+      <h3>Mooovies</h3>
+    </button>
+  </div>
+  
+  <button mat-button [matMenuTriggerFor]="genres">Genres</button>
+  <mat-menu #genres="matMenu">
+    <button mat-menu-item>Adventure</button>
+    <button mat-menu-item>Comedy</button>
+    <button mat-menu-item>Crime</button>
+    <button mat-menu-item>Drama</button>
+    <button mat-menu-item>Horror</button>
+    <button mat-menu-item>SciFi</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="directors">Directors</button>
+  <mat-menu #directors="matMenu">
+    <button mat-menu-item>Joel Coen</button>
+    <button mat-menu-item>Greta Gerwig</button>
+    <button mat-menu-item>Ang Lee</button>
+    <button mat-menu-item>Quentin Tarantino</button>
+  </mat-menu>
+  <div class="profile-button">
+        <button mat-raised-button (click)="toProfile()" >
+      <p>{{user.Username}}</p>
+    </button>
+  </div>
+</div>

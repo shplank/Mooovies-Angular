@@ -1,0 +1,44 @@
+.main-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.film-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 80px;
+  max-width: 1800px;
+}
+
+mat-card {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  position: relative;
+  max-width: 320px;
+  padding: 20px;
+  margin: 20px;
+  border: 2px;
+  border-color: #333;
+}
+
+mat-card-title {
+  font-family: "Commissioner", sans-serif;
+}
+
+mat-card-subtitle {
+  font-family: "Commissioner", sans-serif;
+}
+
+img {
+  width: 280px;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #ffcece;
+  color: #000;
+  font-family: "Commissioner", sans-serif;
+}
