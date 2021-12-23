@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { AppComponent } from './app.component';
@@ -23,13 +24,15 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DirectorComponent } from './director/director.component';
 import { GenreComponent } from './genre/genre.component';
+import { FilmDetailsComponent } from './film-details/film-details.component';
+import { EditProfileFormComponent } from './edit-profile-form/edit-profile-form.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'films', component: FilmCardComponent },
   { path: 'users', component: UserProfileComponent},
-  { path: 'genres', component: GenreComponent },
-  { path: 'directors', component: DirectorComponent},
+  { path: 'films/Genre/:id', component: GenreComponent },
+  { path: 'films/Director/:id', component: DirectorComponent },
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
@@ -43,7 +46,9 @@ const appRoutes: Routes = [
     UserProfileComponent,
     NavbarComponent,
     DirectorComponent,
-    GenreComponent
+    GenreComponent,
+    FilmDetailsComponent,
+    EditProfileFormComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -59,6 +64,7 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatSnackBarModule,
     MatIconModule,
+    MatExpansionModule,
     MatMenuModule
   ],
   providers: [],

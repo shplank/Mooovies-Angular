@@ -8,25 +8,26 @@ import { Router } from '@angular/router';
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
-})
-export class UserLoginFormComponent implements OnInit {
+  })
+
+  export class UserLoginFormComponent implements OnInit {
 
   @Input() userData = { Username: '', Password: '' };
 
-constructor(
-  public fetchApiData: FetchApiDataService,
-  public dialogRef: MatDialogRef<UserLoginFormComponent>,
-  public snackBar: MatSnackBar,
-  public router: Router
-  ) { }
-    
-ngOnInit(): void {
-}
+  constructor(
+    public fetchApiData: FetchApiDataService,
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
+    public snackBar: MatSnackBar,
+    public router: Router
+    ) { }
+      
+  ngOnInit(): void {
+  }
 
-// This is the function responsible for sending the form inputs to the backend
-loginUser(): void {
+  // This is the function responsible for sending the form inputs to the backend
+  loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
-  // Logic for a successful user login goes here! (To be implemented)
+  // Logic for a successful user login goes here!
     this.dialogRef.close(); // This will close the modal
     localStorage.setItem('token', response.token);
     localStorage.setItem('user', JSON.stringify(response.user));

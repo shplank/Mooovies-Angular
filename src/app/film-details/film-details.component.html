@@ -1,0 +1,21 @@
+<div class="film-details">
+  <img class="details-image" src={{film.ImagePath}} />
+  <div id="details-text" mat-dialog-content>
+    <div id="close-button">
+      <button mat-icon-button color="dark" [mat-dialog-close]="true">
+        <mat-icon class="close">close</mat-icon>
+      </button>
+    </div>
+    <h1 class="details-title"><b>{{film.Title}}</b></h1>
+    <p>{{film.ReleaseYear}}</p>
+    <p>{{film.Description}}</p>
+    <mat-dialog-actions>
+      <button mat-button (click)="openGenre()">Genre: {{film.Genre.Name}}</button>
+      <button mat-button (click)="openDirector()">Director: {{film.Director.Name}}</button>
+      <button mat-icon-button id="favorite-icon" (click)="makeFave(film)">
+        <mat-icon *ngIf="faveFilm(film._id)">favorite</mat-icon>
+        <mat-icon *ngIf="!faveFilm(film._id)">favorite_border</mat-icon>
+      </button>
+    </mat-dialog-actions>
+  </div>
+</div>

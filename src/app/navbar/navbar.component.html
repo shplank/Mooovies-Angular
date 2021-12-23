@@ -8,25 +8,45 @@
     </button>
   </div>
   
-  <button mat-button [matMenuTriggerFor]="genres">Genres</button>
-  <mat-menu #genres="matMenu">
-    <button mat-menu-item>Adventure</button>
-    <button mat-menu-item>Comedy</button>
-    <button mat-menu-item>Crime</button>
-    <button mat-menu-item>Drama</button>
-    <button mat-menu-item>Horror</button>
-    <button mat-menu-item>SciFi</button>
-  </mat-menu>
-  <button mat-button [matMenuTriggerFor]="directors">Directors</button>
-  <mat-menu #directors="matMenu">
-    <button mat-menu-item>Joel Coen</button>
-    <button mat-menu-item>Greta Gerwig</button>
-    <button mat-menu-item>Ang Lee</button>
-    <button mat-menu-item>Quentin Tarantino</button>
-  </mat-menu>
-  <div class="profile-button">
-        <button mat-raised-button (click)="toProfile()" >
-      <p>{{user.Username}}</p>
-    </button>
+  <div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Genres
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let genre of genres">
+      <button mat-button (click)="toGenre" 
+      routerLink='Genre/{{genre._id}}'
+      >{{genre.Name}}</button>
+    </div>
+  </mat-expansion-panel>
   </div>
+
+  <div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Directors
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div *ngFor="let director of directors">
+      <button mat-button (click)="toDirector"
+      routerLink='Director/{{director._id}}'
+      >{{director.Name}}</button>
+    </div>
+  </mat-expansion-panel>
+  </div>
+  
+  <div>
+  <button mat-button [matMenuTriggerFor]="profile">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-menu #profile="matMenu">
+    <button mat-menu-item (click)="toProfile()">view favorites</button>
+    <button mat-menu-item (click)="openEdit()">edit your info</button>
+    <button mat-menu-item (click)="logOut()">log out</button>
+  </mat-menu>
+  </div>
+  
 </div>

@@ -9,7 +9,6 @@
   flex-direction: row;
   justify-content: center;
   margin-top: 80px;
-  max-width: 1800px;
 }
 
 mat-card {
@@ -24,12 +23,18 @@ mat-card {
   border-color: #333;
 }
 
-mat-card-title {
-  font-family: "Commissioner", sans-serif;
+mat-card-header {
+  width: 200px;
+  margin-left: 0;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
-mat-card-subtitle {
+.title {
   font-family: "Commissioner", sans-serif;
+  width: 200px;
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 img {
@@ -37,8 +42,12 @@ img {
   margin: 0 auto;
 }
 
-button {
-  background-color: #ffcece;
+.details-button {
+  background-color: #fff;
   color: #000;
   font-family: "Commissioner", sans-serif;
+}
+
+.mat-icon-button {
+  color: red;
 }

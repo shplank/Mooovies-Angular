@@ -16,6 +16,9 @@ const headers = {headers: new HttpHeaders({ Authorization: 'Bearer ' + token, })
 })
 
 export class FetchApiDataService {
+  static getUser(Username: any) {
+    throw new Error('Method not implemented.');
+  }
   // Inject the HttpClient module to the constructor params
  // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
@@ -68,51 +71,72 @@ export class FetchApiDataService {
       catchError(this.handleError));
   }
 
+  // api call for film list
+  public getAllDirectors(): Observable<any> {
+    return this.http.get(apiUrl + 'directors', headers)
+      .pipe(map(this.extractResponseData),
+      catchError(this.handleError));
+  }
+
+  // api call for film list
+  public getAllGenres(): Observable<any> {
+    return this.http.get(apiUrl + 'genres', headers)
+      .pipe(map(this.extractResponseData),
+      catchError(this.handleError));
+  }
+
   // api call for director info
   public getDirector(DirectorId: string): Observable<any> {
-    return this.http.get(apiUrl + '/Director/' + DirectorId, headers)
+    return this.http.get(apiUrl + 'Director/' + DirectorId, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for genre info
   public getGenre(GenreId: string): Observable<any> {
-    return this.http.get(apiUrl + '/Genre/' + GenreId, headers)
+    return this.http.get(apiUrl + 'Genre/' + GenreId, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for getting user data, including favorites
-  public getUser(Username: string): Observable<any> {
-    return this.http.get(apiUrl + `users/${Username}`, headers)
+  public getUser(Username: any): Observable<any> {
+    return this.http.get(apiUrl + 'users/' + Username, headers)
+      .pipe(map(this.extractResponseData),
+      catchError(this.handleError));
+    }
+
+  // api call for getting user favorites
+  public getFavorites(Username: any): Observable<any> {
+    return this.http.get(apiUrl + 'favorites/' + Username, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for adding favorite
-  public addFavorite(Username: string, FilmId: string): Observable<any> {
-    return this.http.post(apiUrl + '/favorites/' + Username + '/films/' + FilmId, headers)
+  public addFavorite(Username: any, FilmId: string): Observable<any> {
+    return this.http.post(apiUrl + 'favorites/' + Username + '/films/' + FilmId, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for removing favorite
-  public removeFavorite(Username: string, FilmId: string): Observable<any> {
-    return this.http.delete(apiUrl + '/favorites/' + Username + '/films/' + FilmId, headers)
+  public removeFavorite(Username: any, FilmId: string): Observable<any> {
+    return this.http.delete(apiUrl + 'favorites/' + Username + '/films/' + FilmId, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for profile update
-  public updateProfile(Username: string, updatedInfo: object): Observable<any> {
-    return this.http.put(apiUrl + '/users/update/' + Username, updatedInfo, headers)
+  public updateProfile(Username: any, updatedInfo: object): Observable<any> {
+    return this.http.put(apiUrl + 'users/update/' + Username, updatedInfo, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
 
   // api call for profile deletion
-  public deleteProfile(Username: string): Observable<any> {
-    return this.http.delete(apiUrl + '/users/' + Username, headers)
+  public deleteProfile(Username: any): Observable<any> {
+    return this.http.delete(apiUrl + 'users/' + Username, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }
