@@ -60,7 +60,7 @@ export class FilmCardComponent implements OnInit {
   }
 
   addFavorite(FilmId: string, Title: string): any {
-    this.fetchApiData.addFavorite(this.user.Username, FilmId).subscribe((response: any) => {
+    this.fetchApiData.addFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
       this.snackBar.open(`${Title} added to favorites.`, 'Neat!', {
         duration: 4000
         });
@@ -70,7 +70,7 @@ export class FilmCardComponent implements OnInit {
   }
 
   removeFavorite(FilmId: string, Title: string): any {
-    this.fetchApiData.removeFavorite(this.user.Username, FilmId).subscribe((response: any) => {
+    this.fetchApiData.removeFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
       this.snackBar.open(`${Title} removed from favorites.`, `Bye ${Title}.`, {
         duration: 4000
         });

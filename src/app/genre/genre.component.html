@@ -2,10 +2,9 @@
   <app-navbar></app-navbar>
     <div class="film-card-wrapper" style="display: flex;">
       <mat-card *ngFor="let film of genre; let i=index;">
-        <button mat-button class="details-button">
+        <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">
           <mat-card-header>
             <mat-card-title>{{film.Title}}</mat-card-title>
-            <mat-card-subtitle>({{film.ReleaseYear}})</mat-card-subtitle>
           </mat-card-header>
           <img src={{film.ImagePath}} alt= {{film.Title}} />
       </button>

@@ -61,6 +61,7 @@ export class FilmDetailsComponent implements OnInit {
   getFavorites(): void {
     this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
       this.favorites = response.Favorites;
+      console.log(this.favorites);
       return this.favorites;
     });
   }
@@ -71,13 +72,13 @@ export class FilmDetailsComponent implements OnInit {
 
   makeFave(film: any): void {
     this.faveFilm(film._id)
-      ? this.removeFavorite(film._id, film.Title)
-      : this.addFavorite(film._id, film.Title);
+      ? this.removeFavorite(this.user.Username, film._id)
+      : this.addFavorite(this.user.Username, film._id);
   }
 
-  addFavorite(FilmId: string, Title: string): void {
-    this.fetchApiData.addFavorite(this.user.Username, FilmId).subscribe((response: any) => {
-      this.snackBar.open(`${Title} added to favorites.`, 'Neat!', {
+  addFavorite(Username: any, FilmId: string): any {
+    this.fetchApiData.addFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
+      this.snackBar.open(`${this.film.Title} added to favorites.`, 'Neat!', {
         duration: 4000
         });
       this.favorites = response.Favorites;
@@ -85,9 +86,9 @@ export class FilmDetailsComponent implements OnInit {
     });
   }
 
-  removeFavorite(FilmId: string, Title: string): void {
-    this.fetchApiData.removeFavorite(this.user.Username, FilmId).subscribe((response: any) => {
-      this.snackBar.open(`${Title} removed from favorites.`, `Bye ${Title}.`, {
+  removeFavorite(Username: any, FilmId: string): any {
+    this.fetchApiData.removeFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
+      this.snackBar.open(`${this.film.Title} removed from favorites.`, `Bye ${this.film.Title}.`, {
         duration: 4000
         });
       this.favorites = response.Favorites;

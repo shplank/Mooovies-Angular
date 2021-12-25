@@ -15,6 +15,8 @@ export class NavbarComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user') || '');
   genres: any;
   directors: any;
+  genrePanelOpenState: boolean = false;
+  directorPanelOpenState: boolean = false;
 
   constructor(
     public router: Router,
@@ -32,15 +34,13 @@ export class NavbarComponent implements OnInit {
   getAllGenres(): void {
     this.fetchApiData.getAllGenres().subscribe((response: any) => {
       this.genres = response;
-        console.log(this.genres);
         return this.genres;
     });
   }
   
   getAllDirectors(): void {
     this.fetchApiData.getAllDirectors().subscribe((response: any) => {
-      this.directors = response;
-        console.log(this.directors); 
+      this.directors = response; 
         return this.directors;
     });
   }
@@ -51,10 +51,12 @@ export class NavbarComponent implements OnInit {
 
   toGenre(_id: any): void {
     this.router.navigate(['Genre']);
+    this.getAllGenres();
   }
 
   toDirector(_id: any): void {
     this.router.navigate(['Director']);
+    this.getAllDirectors();
   }
 
   toProfile(): void {
@@ -63,7 +65,7 @@ export class NavbarComponent implements OnInit {
 
   openEdit(): void {
     this.dialog.open(EditProfileFormComponent, {
-      width: '500px'
+      width: '260px'
     });
   }
 
@@ -72,6 +74,11 @@ export class NavbarComponent implements OnInit {
     localStorage.removeItem('token');
     this.router.navigate(['/welcome'])
       .catch(console.error);
+  }
+
+  closePanel() {
+    this.genrePanelOpenState = false;
+    this.directorPanelOpenState = false;
   }
 
 }

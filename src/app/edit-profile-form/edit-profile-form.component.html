@@ -46,11 +46,17 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-        <button
+        <button class="update-button"
           mat-raised-button
           (click)="updateProfile()"
         >
-          Update
+          Update profile
+        </button>
+        <button class="delete-button"
+          mat-raised-button
+          (click)="deleteProfile()"
+        >
+          Delete profile
         </button>
     </mat-card-actions>
   </mat-card>

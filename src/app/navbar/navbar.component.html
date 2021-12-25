@@ -4,19 +4,21 @@
       <img src="assets/MoooviesLogo.png" width="80px" alt="Mooovies logo" />
     </button>
     <button mat-flat-button (click)="toFilms()" >
-      <h3>Mooovies</h3>
+      <h2>Mooovies</h2>
     </button>
   </div>
   
   <div>
-  <mat-expansion-panel>
+  <mat-expansion-panel [(expanded)]="genrePanelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Genres
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let genre of genres">
-      <button mat-button (click)="toGenre" 
+      <button mat-button 
+      (click)="toGenre" 
+      (click)="closePanel()"
       routerLink='Genre/{{genre._id}}'
       >{{genre.Name}}</button>
     </div>
@@ -24,29 +26,29 @@
   </div>
 
   <div>
-  <mat-expansion-panel>
+  <mat-expansion-panel [(expanded)]="directorPanelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Directors
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let director of directors">
-      <button mat-button (click)="toDirector"
+      <button mat-button (click)="toDirector" (click)="closePanel()"
       routerLink='Director/{{director._id}}'
       >{{director.Name}}</button>
     </div>
   </mat-expansion-panel>
   </div>
   
-  <div>
-  <button mat-button [matMenuTriggerFor]="profile">
-    <mat-icon>person</mat-icon>
-  </button>
-  <mat-menu #profile="matMenu">
-    <button mat-menu-item (click)="toProfile()">view favorites</button>
-    <button mat-menu-item (click)="openEdit()">edit your info</button>
-    <button mat-menu-item (click)="logOut()">log out</button>
-  </mat-menu>
+  <div class="profile-button">
+    <button mat-button [matMenuTriggerFor]="profile">
+      <mat-icon>person</mat-icon>
+    </button>
+    <mat-menu #profile="matMenu">
+      <button mat-menu-item (click)="toProfile()">view favorites</button>
+      <button mat-menu-item (click)="openEdit()">edit your info</button>
+      <button mat-menu-item (click)="logOut()">log out</button>
+    </mat-menu>
   </div>
   
 </div>

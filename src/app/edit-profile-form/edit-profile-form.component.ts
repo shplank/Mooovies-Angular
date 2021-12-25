@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile-form',
@@ -24,7 +25,8 @@ export class EditProfileFormComponent implements OnInit {
     public data: { onSuccess: () => void },
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -35,9 +37,28 @@ export class EditProfileFormComponent implements OnInit {
     
      this.dialogRef.close();
      console.log(response);
+     localStorage.setItem('user', JSON.stringify(response));
      this.snackBar.open('Profile updated.', 'Thanks!', {
       duration: 4000
       });
+    }, (response) => {
+      this.snackBar.open("Something's not right.", 'Try again!', {
+        duration: 4000
+      });
+    });
+  }
+
+  // This is the function responsible for sending the form inputs to the backend
+  deleteProfile(): void {
+    this.fetchApiData.deleteProfile(this.user.Username).subscribe((response) => {
+    
+     this.dialogRef.close();
+     console.log(response);
+     localStorage.setItem('user', JSON.stringify(response));
+     this.snackBar.open('Profile deleted.', 'So long!', {
+      duration: 4000
+      });
+      this.router.navigate(['welcome']);
     }, (response) => {
       this.snackBar.open("Something's not right.", 'Try again!', {
         duration: 4000

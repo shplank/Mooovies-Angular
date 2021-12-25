@@ -10,21 +10,24 @@
   flex-wrap: nowrap;
 }
 
-h3 {
+h2 {
   font-family: "Commissioner", sans-serif;
-  font-size: 40;
+  font-size: 48;
   font-weight: 800;
-  padding: 12px;
+  padding: 12px 12px 12px 0;
   margin-bottom: 0;
 }
 
 .mat-expansion-panel {
   z-index: 1;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+.mat-expansion-panel-header {
+  width: 144px;
 }
 
 .profile-button {
-  margin-bottom: 0;
-  background-color: #ffcece;
-  height: 40px;
-  align-items: center;
+  margin-top: 12px;
 }
