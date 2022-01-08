@@ -10,14 +10,14 @@ import { FilmDetailsComponent } from '../film-details/film-details.component';
   templateUrl: './director.component.html',
   styleUrls: ['./director.component.scss']
 })
+
 export class DirectorComponent implements OnInit {
   films: any[] = [];
   film: any;
   director: any;
+  directorId: any = localStorage.getItem('directorId') || '';
   user: any = JSON.parse(localStorage.getItem('user') || '');
   favorites: any[] = this.user.Favorites;
-  id: any;
-  public href: any = "";
 
   constructor(
     public router: Router,
@@ -27,14 +27,12 @@ export class DirectorComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-      this.href = this.router.url.split("/").pop();
-      console.log(this.router.url);
       this.getDirector();
       this.getUser();
     }
 
     getDirector(): any {
-      this.fetchApiData.getDirector(this.href).subscribe((response: any) => {
+      this.fetchApiData.getDirector(this.directorId).subscribe((response: any) => {
           this.director = response;
           console.log(this.director);
           return this.director;

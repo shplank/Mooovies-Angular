@@ -1,5 +1,12 @@
 <div class="main-body">
   <app-navbar></app-navbar>
+  <div class="director-header">
+    <img class="director-image" src={{director[0].Director.ImagePath}} />
+    <h3 class="director-name">{{director[0].Director.Name}}</h3>
+    <p>b. {{director[0].Director.Birth}}</p>
+    <p>{{director[0].Director.Bio}}</p>
+    <p>Films by this director:</p>
+  </div>
     <div class="film-card-wrapper" style="display: flex;">
       <mat-card *ngFor="let film of director; let i=index;">
         <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">

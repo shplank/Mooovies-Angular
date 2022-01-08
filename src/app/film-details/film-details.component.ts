@@ -38,24 +38,18 @@ export class FilmDetailsComponent implements OnInit {
     });
   }
 
-  openGenre(): void {
-    const genre = this.film.Genre._id;
-    this.fetchApiData.getGenre(genre).subscribe((response) => {
+  toGenre( _id: any ): void {
+    localStorage.setItem('genreId', _id);
+    console.log("GenreId:", _id);
     this.dialogRef.close();
-    this.router.navigate(['genres']);
-    }, (response) => {
-      
-    });
+    this.router.navigate(['Genre']);
   }
 
-  openDirector(): void {
-    const director = this.film.Director._id;
-    this.fetchApiData.getGenre(director).subscribe((response) => {
+  toDirector( _id: any ): void {
+    localStorage.setItem('directorId', _id);
+    console.log("directorId':", _id);
     this.dialogRef.close();
-    this.router.navigate(['directors']);
-    }, (response) => {
-      
-    });
+    this.router.navigate(['Director']);
   }
 
   getFavorites(): void {

@@ -15,11 +15,10 @@ export class GenreComponent implements OnInit {
   films: any[] = [];
   film: any;
   genre: any;
+  genreId: any = localStorage.getItem('genreId') || '';
   user: any = JSON.parse(localStorage.getItem('user') || '');
   favorites: any[] = this.user.Favorites;
-  id: any;
   genreInfo: any;
-  public href: any = "";
 
     constructor(
       public router: Router,
@@ -31,24 +30,15 @@ export class GenreComponent implements OnInit {
     ngOnInit(): void {
       this.getGenre();
       this.getUser();
-      this.getGenreInfo();
     }
 
     getGenre(): any {
-      this.href = this.router.url.split("/").pop();
-      console.log(this.href);
-      this.fetchApiData.getGenre(this.href).subscribe((response: any) => {
+      this.fetchApiData.getGenre(this.genreId).subscribe((response: any) => {
           this.genre = response;
           console.log(this.genre);
           return this.genre;
         });
       }
-
-    getGenreInfo(): any {
-      this.genreInfo = this.genre[0];
-      console.log(this.genreInfo);
-    }
-    
   
     getUser(): any {
         this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {

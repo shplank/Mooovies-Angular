@@ -93,8 +93,8 @@ export class FetchApiDataService {
     }
 
   // api call for genre info
-  public getGenre(GenreId: string): Observable<any> {
-    return this.http.get(apiUrl + 'Genre/' + GenreId, headers)
+  public getGenre(genreId: any): Observable<any> {
+    return this.http.get(apiUrl + 'Genre/' + genreId, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }

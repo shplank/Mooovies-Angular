@@ -17,9 +17,8 @@
     </mat-expansion-panel-header>
     <div *ngFor="let genre of genres">
       <button mat-button 
-      (click)="toGenre" 
+      (click)="toGenre(genre._id)"
       (click)="closePanel()"
-      routerLink='Genre/{{genre._id}}'
       >{{genre.Name}}</button>
     </div>
   </mat-expansion-panel>
@@ -33,8 +32,9 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div *ngFor="let director of directors">
-      <button mat-button (click)="toDirector" (click)="closePanel()"
-      routerLink='Director/{{director._id}}'
+      <button mat-button 
+      (click)="toDirector(director._id)"
+      (click)="closePanel()"
       >{{director.Name}}</button>
     </div>
   </mat-expansion-panel>

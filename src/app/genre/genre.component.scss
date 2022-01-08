@@ -3,12 +3,25 @@
   flex-direction: column;
 }
 
+.genre-header {
+  padding: 8px 4px 8px 16px;
+  margin: 80px auto 0;
+  width: 40%;
+  font-family: "Commissioner", sans-serif;
+  background-color: #ffcece;
+  border-radius: 4px;
+}
+
+.genre-name {
+  font-size: 60;
+  font-weight: 800;
+}
+
 .film-card-wrapper {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-top: 80px;
 }
 
 mat-card {

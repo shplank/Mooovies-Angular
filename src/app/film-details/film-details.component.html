@@ -10,8 +10,8 @@
     <p>{{film.ReleaseYear}}</p>
     <p>{{film.Description}}</p>
     <mat-dialog-actions>
-      <button mat-button (click)="openGenre()">Genre: {{film.Genre.Name}}</button>
-      <button mat-button (click)="openDirector()">Director: {{film.Director.Name}}</button>
+      <button mat-button (click)="toGenre(film.Genre._id)">Genre: {{film.Genre.Name}}</button>
+      <button mat-button (click)="toDirector(film.Director._id)">Director: {{film.Director.Name}}</button>
       <button mat-icon-button id="favorite-icon" (click)="makeFave(film)">
         <mat-icon *ngIf="faveFilm(film._id)">favorite</mat-icon>
         <mat-icon *ngIf="!faveFilm(film._id)">favorite_border</mat-icon>

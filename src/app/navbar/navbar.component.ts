@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   user: any = JSON.parse(localStorage.getItem('user') || '');
   genres: any;
   directors: any;
+  genreId: any;
   genrePanelOpenState: boolean = false;
   directorPanelOpenState: boolean = false;
 
@@ -49,15 +50,19 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['films']);
   }
 
-  toGenre(_id: any): void {
+  toGenre( _id: any ): void {
+    localStorage.setItem('genreId', _id);
+    console.log("GenreId:", _id);
     this.router.navigate(['Genre']);
-    this.getAllGenres();
   }
 
-  toDirector(_id: any): void {
+  toDirector( _id: any ): void {
+    localStorage.setItem('directorId', _id);
+    console.log("directorId':", _id);
     this.router.navigate(['Director']);
-    this.getAllDirectors();
   }
+
+  // functions under the user dropdown
 
   toProfile(): void {
     this.router.navigate(['users']);
@@ -72,7 +77,7 @@ export class NavbarComponent implements OnInit {
   logOut(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.router.navigate(['/welcome'])
+    this.router.navigate(['welcome'])
       .catch(console.error);
   }
 
