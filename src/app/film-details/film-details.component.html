@@ -1,21 +1,21 @@
 <div class="film-details">
-  <img class="details-image" src={{film.ImagePath}} />
+  <img class="details-image" src={{film.ImagePath}} alt={{film.Title}} />
   <div id="details-text" mat-dialog-content>
-    <div id="close-button">
+    <div id="fave-close">
+      <button mat-icon-button id="favorite-icon" (click)="makeFave(film)">
+        <mat-icon *ngIf="faveFilm(film._id)">favorite</mat-icon>
+        <mat-icon *ngIf="!faveFilm(film._id)">favorite_border</mat-icon>
+      </button>
       <button mat-icon-button color="dark" [mat-dialog-close]="true">
-        <mat-icon class="close">close</mat-icon>
+        <mat-icon id="close-icon">close</mat-icon>
       </button>
     </div>
     <h1 class="details-title"><b>{{film.Title}}</b></h1>
     <p>{{film.ReleaseYear}}</p>
     <p>{{film.Description}}</p>
     <mat-dialog-actions>
-      <button mat-button (click)="toGenre(film.Genre._id)">Genre: {{film.Genre.Name}}</button>
-      <button mat-button (click)="toDirector(film.Director._id)">Director: {{film.Director.Name}}</button>
-      <button mat-icon-button id="favorite-icon" (click)="makeFave(film)">
-        <mat-icon *ngIf="faveFilm(film._id)">favorite</mat-icon>
-        <mat-icon *ngIf="!faveFilm(film._id)">favorite_border</mat-icon>
-      </button>
+      <button mat-button class="genre-name" (click)="toGenre(film.Genre._id)">Genre: {{film.Genre.Name}}</button>
+      <button mat-button id="director-name" (click)="toDirector(film.Director._id)">Director: {{film.Director.Name}}</button>
     </mat-dialog-actions>
   </div>
 </div>

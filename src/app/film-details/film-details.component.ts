@@ -55,7 +55,6 @@ export class FilmDetailsComponent implements OnInit {
   getFavorites(): void {
     this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
       this.favorites = response.Favorites;
-      console.log(this.favorites);
       return this.favorites;
     });
   }
@@ -70,7 +69,7 @@ export class FilmDetailsComponent implements OnInit {
       : this.addFavorite(this.user.Username, film._id);
   }
 
-  addFavorite(Username: any, FilmId: string): any {
+  addFavorite(Username: any, FilmId: string): void {
     this.fetchApiData.addFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
       this.snackBar.open(`${this.film.Title} added to favorites.`, 'Neat!', {
         duration: 4000
@@ -78,9 +77,10 @@ export class FilmDetailsComponent implements OnInit {
       this.favorites = response.Favorites;
       return this.favorites;
     });
+    return this.getFavorites();
   }
 
-  removeFavorite(Username: any, FilmId: string): any {
+  removeFavorite(Username: any, FilmId: string): void {
     this.fetchApiData.removeFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
       this.snackBar.open(`${this.film.Title} removed from favorites.`, `Bye ${this.film.Title}.`, {
         duration: 4000
@@ -88,6 +88,7 @@ export class FilmDetailsComponent implements OnInit {
       this.favorites = response.Favorites;
       return this.favorites;
     });
+    return this.getFavorites();
   }
 
 }

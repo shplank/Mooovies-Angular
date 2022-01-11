@@ -1,44 +1,36 @@
 .main-body {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .film-card-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
+  flex-flow: row wrap;
   justify-content: center;
-  margin-top: 80px;
+  margin: 100px auto;
 }
 
 mat-card {
   display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
+  flex-flow: column wrap;
   position: relative;
+  align-items: center;
   max-width: 320px;
   padding: 20px;
   margin: 20px;
-  border: 2px;
   border-color: #333;
 }
 
-mat-card-header {
-  width: 200px;
-  margin-left: 0;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.title {
+#title {
+  display: flex;
+  max-width: 240px;
   font-family: "Commissioner", sans-serif;
-  width: 200px;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  overflow-wrap: normal;
 }
 
 img {
-  width: 280px;
+  width: 240px;
   margin: 0 auto;
 }
 
@@ -50,4 +42,11 @@ img {
 
 .mat-icon-button {
   color: red;
+}
+
+@media all and (max-width: 849px) {
+  .main-body {
+    flex-basis: 340px;
+    flex: none;
+  }
 }

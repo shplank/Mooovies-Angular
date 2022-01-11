@@ -3,9 +3,7 @@
   <div class="film-card-wrapper">
     <mat-card *ngFor="let film of films; let i=index;">
       <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">
-        <mat-card-header>
-          <mat-card-title class="title">{{film.Title}}</mat-card-title>
-        </mat-card-header>
+        <h2 id="title">{{film.Title}}</h2>
         <img src={{film.ImagePath}} alt= {{film.Title}} />
       </button>
     </mat-card>

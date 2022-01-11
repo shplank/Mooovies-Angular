@@ -1,10 +1,7 @@
 <div class="main-body">
   <app-navbar></app-navbar>
   <div class="favorites-header">
-    <h1>{{ user.Username }}'s favorites</h1>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="openEdit()">Edit</button>
-    </mat-card-actions>
+    <h2>{{ user.Username }}'s favorites</h2>
   </div>
   <div class="film-card-wrapper" style="display: flex;">
     <mat-card *ngFor="let film of favorites; let i=index;">

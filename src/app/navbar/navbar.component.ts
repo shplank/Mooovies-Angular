@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.router.onSameUrlNavigation = 'reload';
     this.getAllGenres();
     this.getAllDirectors();
   }

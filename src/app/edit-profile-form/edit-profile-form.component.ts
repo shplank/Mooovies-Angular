@@ -34,7 +34,6 @@ export class EditProfileFormComponent implements OnInit {
   // This is the function responsible for sending the form inputs to the backend
   updateProfile(): void {
     this.fetchApiData.updateProfile(this.user.Username, this.userData).subscribe((response) => {
-    
      this.dialogRef.close();
      console.log(response);
      localStorage.setItem('user', JSON.stringify(response));

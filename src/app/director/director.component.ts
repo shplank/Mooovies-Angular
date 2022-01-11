@@ -27,6 +27,7 @@ export class DirectorComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+      this.router.onSameUrlNavigation = 'reload';
       this.getDirector();
       this.getUser();
     }

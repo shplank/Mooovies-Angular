@@ -3,13 +3,13 @@
     <button mat-flat-button (click)="toFilms()" >
       <img src="assets/MoooviesLogo.png" width="80px" alt="Mooovies logo" />
     </button>
-    <button mat-flat-button (click)="toFilms()" >
-      <h2>Mooovies</h2>
+    <button class="mooovies-button" mat-flat-button (click)="toFilms()" >
+      <h1 class="mooovies">Mooovies</h1>
     </button>
   </div>
   
   <div>
-  <mat-expansion-panel [(expanded)]="genrePanelOpenState">
+  <mat-expansion-panel class="genres" [(expanded)]="genrePanelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Genres
@@ -25,7 +25,7 @@
   </div>
 
   <div>
-  <mat-expansion-panel [(expanded)]="directorPanelOpenState">
+  <mat-expansion-panel class="directors" [(expanded)]="directorPanelOpenState">
     <mat-expansion-panel-header>
       <mat-panel-title>
         Directors
@@ -42,7 +42,7 @@
   
   <div class="profile-button">
     <button mat-button [matMenuTriggerFor]="profile">
-      <mat-icon>person</mat-icon>
+      <mat-icon class="profile-icon">person</mat-icon>
     </button>
     <mat-menu #profile="matMenu">
       <button mat-menu-item (click)="toProfile()">view favorites</button>

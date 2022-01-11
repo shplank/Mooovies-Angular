@@ -40,12 +40,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  openEdit(): void {
-    this.dialog.open(EditProfileFormComponent, {
-      width: '400px'
-    });
-  }
-
   openFilmDetails( Title: string ): void {
     this.dialog.open(FilmDetailsComponent, { 
       data: { Title },

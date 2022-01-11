@@ -28,6 +28,7 @@ export class GenreComponent implements OnInit {
       ) { }
   
     ngOnInit(): void {
+      this.router.onSameUrlNavigation = 'reload';
       this.getGenre();
       this.getUser();
     }

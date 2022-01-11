@@ -1,27 +1,23 @@
 <div class="main-body">
   <app-navbar></app-navbar>
   <div class="director-header">
-    <img class="director-image" src={{director[0].Director.ImagePath}} />
-    <h3 class="director-name">{{director[0].Director.Name}}</h3>
-    <p>b. {{director[0].Director.Birth}}</p>
-    <p>{{director[0].Director.Bio}}</p>
-    <p>Films by this director:</p>
-  </div>
-    <div class="film-card-wrapper" style="display: flex;">
-      <mat-card *ngFor="let film of director; let i=index;">
-        <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">
-          <mat-card-header>
-            <mat-card-title>{{film.Title}}</mat-card-title>
-          </mat-card-header>
-          <img src={{film.ImagePath}} alt= {{film.Title}} />
-      </button>
-        <mat-card-actions>
-          <button mat-icon-button (click)="makeFave(film)">
-            <mat-icon *ngIf="faveFilm(film._id)">favorite</mat-icon>
-            <mat-icon *ngIf="!faveFilm(film._id)">favorite_border</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
+    <div class="director-box">
+      <img class="director-image" src={{director[0].Director.ImagePath}} />
     </div>
+    <div class="director-text">
+      <h2 class="director-name">{{director[0].Director.Name}}</h2>
+      <p>b. {{director[0].Director.Birth}}</p>
+      <p>{{director[0].Director.Bio}}</p>
+    </div>
+  </div>
+  <p class="example-text">Films by this director:</p>
+  <div class="film-card-wrapper" style="display: flex;">
+    <mat-card *ngFor="let film of director; let i=index;">
+      <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">
+        <h2 id="title">{{film.Title}}</h2>
+        <img src={{film.ImagePath}} alt= {{film.Title}} />
+      </button>
+    </mat-card>
+  </div>
 </div>
 

@@ -8,19 +8,51 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 240px;
+  width: 200px;
   margin-left: 8px;
 }
 
 .details-image {
-  width: 400px;
+  width: 360px;
 }
 
-#close-button {
-  margin-left: 200px;
+.genre-name {
+  padding-left: 0;
+}
+
+#director-name {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.mat-dialog-actions {
+  margin-left: 0;
+}
+
+#fave-close {
+  flex-direction: row;
+  justify-content: space-between;
   margin-bottom: 20px;
 }
 
 #favorite-icon {
   color: red;
+}
+
+#close-icon {
+  margin-left: 120px;
+}
+
+@media all and (max-width: 849px) {
+  .details-image {
+    width: 300px;
+  }
+  #details-text {
+    width: 180px;
+    margin-left: 0px;
+  }
+  #close-button {
+    margin-left: 140px;
+    margin-bottom: 12px;
+  }
 }

@@ -49,34 +49,4 @@ export class FilmCardComponent implements OnInit {
     });
   }
 
-  faveFilm(FilmId: string): boolean {
-    return this.favorites.some((film) => film._id === FilmId);
-  }
-
-  makeFave(film: any): void {
-    this.faveFilm(film._id)
-      ? this.removeFavorite(film._id, film.Title)
-      : this.addFavorite(film._id, film.Title);
-  }
-
-  addFavorite(FilmId: string, Title: string): any {
-    this.fetchApiData.addFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
-      this.snackBar.open(`${Title} added to favorites.`, 'Neat!', {
-        duration: 4000
-        });
-      this.favorites = response.Favorites;
-      return this.favorites;
-    });
-  }
-
-  removeFavorite(FilmId: string, Title: string): any {
-    this.fetchApiData.removeFavorite(this.user.Username, this.film._id).subscribe((response: any) => {
-      this.snackBar.open(`${Title} removed from favorites.`, `Bye ${Title}.`, {
-        duration: 4000
-        });
-      this.favorites = response.Favorites;
-      return this.favorites;
-    });
-  }
-
 }
