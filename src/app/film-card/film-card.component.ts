@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { FilmDetailsComponent } from '../film-details/film-details.component';
 
@@ -11,6 +12,7 @@ import { FilmDetailsComponent } from '../film-details/film-details.component';
 })
 
 export class FilmCardComponent implements OnInit {
+  isLoading = false;
   films: any[] = [];
   film: any;
   user: any = JSON.parse(localStorage.getItem('user') || '');
@@ -28,11 +30,13 @@ export class FilmCardComponent implements OnInit {
   }
 
   getFilms(): void {
+    this.isLoading = true;
     this.fetchApiData.getAllFilms().subscribe((response: any) => {
         this.films = response;
         console.log(this.films);
         return this.films;
       });
+    this.isLoading = false;
     }
 
   getUser(): any {

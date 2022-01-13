@@ -1,46 +1,51 @@
 <div class="navbar">
   <div class="home-button">
-    <button mat-flat-button (click)="toFilms()" >
-      <img src="assets/MoooviesLogo.png" width="80px" alt="Mooovies logo" />
-    </button>
-    <button class="mooovies-button" mat-flat-button (click)="toFilms()" >
-      <h1 class="mooovies">Mooovies</h1>
-    </button>
+    <div class="logo-button">
+      <button mat-flat-button (click)="toFilms()" >
+        <img class="logo" src="assets/MoooviesLogo.png" alt="Mooovies logo" />
+      </button>
+    </div>
+    <div class="mooovies-button">
+      <button mat-flat-button (click)="toFilms()" >
+        <h1 id="mooovies">Mooovies</h1>
+      </button>
+    </div>
   </div>
   
-  <div>
-  <mat-expansion-panel class="genres" [(expanded)]="genrePanelOpenState">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Genres
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div *ngFor="let genre of genres">
-      <button mat-button 
-      (click)="toGenre(genre._id)"
-      (click)="closePanel()"
-      >{{genre.Name}}</button>
+  <div class="genres-directors">
+    <div class="genres">
+      <mat-expansion-panel [(expanded)]="genrePanelOpenState">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Genres
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let genre of genres">
+          <button mat-button 
+          (click)="toGenre(genre._id)"
+          (click)="closePanel()"
+          >{{genre.Name}}</button>
+        </div>
+      </mat-expansion-panel>
     </div>
-  </mat-expansion-panel>
-  </div>
-
-  <div>
-  <mat-expansion-panel class="directors" [(expanded)]="directorPanelOpenState">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Directors
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div *ngFor="let director of directors">
-      <button mat-button 
-      (click)="toDirector(director._id)"
-      (click)="closePanel()"
-      >{{director.Name}}</button>
+    <div class="directors">
+      <mat-expansion-panel [(expanded)]="directorPanelOpenState">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Directors
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let director of directors">
+          <button mat-button 
+          (click)="toDirector(director._id)"
+          (click)="closePanel()"
+          >{{director.Name}}</button>
+        </div>
+      </mat-expansion-panel>
     </div>
-  </mat-expansion-panel>
   </div>
   
-  <div class="profile-button">
+  <div id="profile-button">
     <button mat-button [matMenuTriggerFor]="profile">
       <mat-icon class="profile-icon">person</mat-icon>
     </button>

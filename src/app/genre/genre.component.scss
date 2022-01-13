@@ -43,11 +43,14 @@ mat-card {
   border-color: #333;
 }
 
-#title {
-  display: flex;
+#title-box {
+  white-space: normal;
   max-width: 240px;
+}
+
+#title {
+  padding: 0 auto;
   font-family: "Commissioner", sans-serif;
-  overflow-wrap: normal;
 }
 
 img {
@@ -88,7 +91,7 @@ img {
 
 @media all and (max-width: 688px) {
   .genre-header {
-    margin: 120px auto 0;
+    margin: 130px auto 0;
     width: 80%;
   }
 }

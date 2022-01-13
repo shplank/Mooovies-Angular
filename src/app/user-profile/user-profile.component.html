@@ -1,17 +1,16 @@
 <div class="main-body">
   <app-navbar></app-navbar>
   <div class="favorites-header">
-    <h2>{{ user.Username }}'s favorites</h2>
+    <h2 class="user-name">{{ user.Username }}'s favorites</h2>
   </div>
   <div class="film-card-wrapper" style="display: flex;">
     <mat-card *ngFor="let film of favorites; let i=index;">
       <button mat-button class="details-button" (click)="openFilmDetails(film.Title)">
-        <mat-card-header>
-          <mat-card-title class="title">{{film.Title}}</mat-card-title>
-        </mat-card-header>
+        <div id="title-box">
+          <h2 id="title">{{film.Title}}</h2>
+        </div>
         <img src={{film.ImagePath}} alt= {{film.Title}} />
       </button>
     </mat-card>
   </div>
 </div>
-  

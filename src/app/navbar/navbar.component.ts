@@ -47,6 +47,8 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  // functions attached to nav buttons
+
   toFilms(): void {
     this.router.navigate(['films']);
   }
@@ -55,12 +57,14 @@ export class NavbarComponent implements OnInit {
     localStorage.setItem('genreId', _id);
     console.log("GenreId:", _id);
     this.router.navigate(['Genre']);
+    this.router.onSameUrlNavigation = 'reload';
   }
 
   toDirector( _id: any ): void {
     localStorage.setItem('directorId', _id);
     console.log("directorId':", _id);
     this.router.navigate(['Director']);
+    this.router.onSameUrlNavigation = 'reload';
   }
 
   // functions under the user dropdown

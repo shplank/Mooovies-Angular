@@ -1,22 +1,37 @@
 .navbar {
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
+  max-width: 100%;
   position: absolute;
+  align-self: flex-start;
   justify-content: space-evenly;
   z-index: 1;
   margin: 8px;
 }
 
+button {
+  padding: 0 4px;
+}
+
 .home-button {
-  flex-direction: row;
-  flex-wrap: nowrap;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.logo-button {
+  padding-top: 4px;
+}
+
+.logo {
+  width: 100px;
+  align-self: flex-start;
 }
 
 .mooovies-button {
   padding-left: 0;
 }
 
-.mooovies {
+#mooovies {
   font-family: "Commissioner", sans-serif;
   font-size: 60;
   font-weight: 900;
@@ -24,32 +39,59 @@
   margin-bottom: 0;
 }
 
-.genres {
+.genres-directors {
+  display: flex;
+  flex-flow: row nowrap;
   margin-top: 16px;
+}
+
+.genres {
   margin-right: 8px;
   width: 160px;
 }
 
 .directors {
-  margin-top: 16px;
   margin-right: 8px;
   width: 188px;
 }
 
-.profile-button {
-  margin-top: 20px;
+#profile-button {
+  margin-top: 18px;
+  flex: 0 1;
 }
 
 .profile-icon {
-  font-size: 28px;
-  padding: auto 4px;
+  font-size: 32px;
+  padding-right: 8px;
 }
 
 @media all and (max-width: 688px) {
-  .mooovies {
-    padding: 8px 4px 12px 4px;
+  .home-button {
+    flex-flow: row wrap;
+    max-width: 132px;
   }
-  .profile-button {
-    padding: auto 8px auto 0;
+  .genres-directors {
+    margin-top: 0;
+    flex-flow: column wrap;
+  }
+  .logo {
+    padding: 0 4px;
+  }
+  #mooovies {
+    padding: 4px 4px 0 0;
+    margin-bottom: 0;
+    font-weight: 800;
+  }
+  .genres {
+    width: 120px;
+    margin: 4px 8px 4px 0;
+  }
+  .directors {
+    width: 160px;
+    margin: 4px 8px 4px 0;
+  }
+  #profile-button {
+    margin-top: 4px;
+    padding: 0;
   }
 }

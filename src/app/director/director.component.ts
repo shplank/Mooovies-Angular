@@ -24,7 +24,7 @@ export class DirectorComponent implements OnInit {
     public fetchApiData: FetchApiDataService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
-    ) { }
+    ) { this.router.routeReuseStrategy.shouldReuseRoute = () => false; }
 
     ngOnInit(): void {
       this.router.onSameUrlNavigation = 'reload';
@@ -50,36 +50,6 @@ export class DirectorComponent implements OnInit {
     openFilmDetails( Title: string ): void {
       this.dialog.open(FilmDetailsComponent, { 
         data: { Title },
-      });
-    }
-  
-    faveFilm(FilmId: string): boolean {
-      return this.favorites.some((film) => film._id === FilmId);
-    }
-  
-    makeFave(film: any): void {
-      this.faveFilm(film._id)
-        ? this.removeFavorite(film._id, film.Title)
-        : this.addFavorite(film._id, film.Title);
-    }
-  
-    addFavorite(FilmId: string, Title: string): any {
-      this.fetchApiData.addFavorite(this.user.Username, FilmId).subscribe((response: any) => {
-        this.snackBar.open(`${Title} added to favorites.`, 'Neat!', {
-          duration: 4000
-          });
-        this.favorites = response.Favorites;
-        return this.favorites;
-      });
-    }
-  
-    removeFavorite(FilmId: string, Title: string): any {
-      this.fetchApiData.removeFavorite(this.user.Username, FilmId).subscribe((response: any) => {
-        this.snackBar.open(`${Title} removed from favorites.`, `Bye ${Title}.`, {
-          duration: 4000
-          });
-        this.favorites = response.Favorites;
-        return this.favorites;
       });
     }
   

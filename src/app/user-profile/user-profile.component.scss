@@ -15,7 +15,6 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  //  margin-top: 120px;
 }
 
 mat-card {
@@ -29,15 +28,13 @@ mat-card {
   border-color: #333;
 }
 
-mat-card-header {
-  align-items: flex-start;
+#title-box {
+  white-space: normal;
+  max-width: 240px;
 }
 
-mat-card-title {
-  font-family: "Commissioner", sans-serif;
-}
-
-mat-card-subtitle {
+#title {
+  padding: 0 auto;
   font-family: "Commissioner", sans-serif;
 }
 
@@ -57,4 +54,14 @@ img {
   position: absolute;
   top: 24px;
   right: 24px;
+}
+
+@media all and (max-width: 688px) {
+  .favorites-header {
+    margin: 130px auto 0;
+    padding: 0;
+  }
+  .user-name {
+    margin: 0 auto;
+  }
 }

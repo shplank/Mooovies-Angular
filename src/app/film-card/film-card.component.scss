@@ -4,9 +4,21 @@
   justify-content: center;
 }
 
+app-navbar {
+  display: flex;
+}
+
+.spinner {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
 .film-card-wrapper {
   display: flex;
   flex-flow: row wrap;
+  flex: 0 1 auto;
   justify-content: center;
   margin: 100px auto;
 }
@@ -15,6 +27,7 @@ mat-card {
   display: flex;
   flex-flow: column wrap;
   position: relative;
+  justify-content: center;
   align-items: center;
   max-width: 320px;
   padding: 20px;
@@ -22,11 +35,14 @@ mat-card {
   border-color: #333;
 }
 
-#title {
-  display: flex;
+#title-box {
+  white-space: normal;
   max-width: 240px;
+}
+
+#title {
+  padding: 0 auto;
   font-family: "Commissioner", sans-serif;
-  overflow-wrap: normal;
 }
 
 img {
@@ -44,9 +60,16 @@ img {
   color: red;
 }
 
-@media all and (max-width: 849px) {
+@media all and (max-width: 688px) {
   .main-body {
     flex-basis: 340px;
     flex: none;
+  }
+  .film-card-wrapper {
+    margin: 120px auto;
+  }
+  mat-card {
+    margin: 12px;
+    padding: 12px 12px 20px;
   }
 }

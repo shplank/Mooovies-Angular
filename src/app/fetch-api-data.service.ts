@@ -9,7 +9,7 @@ const apiUrl = 'https://moooviesapi.herokuapp.com/';
 
 const token = localStorage.getItem('token');
 
-const headers = {headers: new HttpHeaders({ Authorization: 'Bearer ' + token, })};
+const headers = {headers: new HttpHeaders({ Authorization: 'Bearer ' + token })};
 
 @Injectable({
   providedIn: 'root'

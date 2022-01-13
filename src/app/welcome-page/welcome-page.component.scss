@@ -19,7 +19,20 @@ h2 {
   margin-bottom: 0;
 }
 
+.welcome-logo {
+  width: 400px;
+}
+
 button {
   background-color: #ffcece;
   color: #000;
+}
+
+@media all and (max-width: 688px) {
+  .welcome-logo {
+    width: 300px;
+  }
+  h1 {
+    margin-top: 12px;
+  }
 }
