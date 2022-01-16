@@ -19,12 +19,12 @@ export class FetchApiDataService {
   static getUser(Username: any) {
     throw new Error('Method not implemented.');
   }
-  // Inject the HttpClient module to the constructor params
- // This will provide HttpClient to the entire class, making it available via this.http
+// Inject the HttpClient module to the constructor params
+// This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
   }
 
-  // Non-typed response extraction
+// Non-typed response extraction
   private extractResponseData(res: any): any {
     const body = res;
     return body || {};
@@ -115,7 +115,7 @@ export class FetchApiDataService {
 
   // api call for adding favorite
   public addFavorite(Username: any, FilmId: string): Observable<any> {
-    return this.http.post(apiUrl + 'favorites/' + Username + '/films/' + FilmId, headers)
+    return this.http.post(apiUrl + 'favorites/' + Username + '/films/' + FilmId, null, headers)
       .pipe(map(this.extractResponseData),
       catchError(this.handleError));
     }

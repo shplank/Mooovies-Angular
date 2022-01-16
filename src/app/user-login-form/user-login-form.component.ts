@@ -34,7 +34,8 @@ import { Router } from '@angular/router';
     this.snackBar.open('You are logged in.', 'Welcome!', {
       duration: 4000
       });
-      this.router.navigate(['films']);
+    this.router.navigate(['films']).then(() => {window.location.reload();
+    });
     }, (response) => {
       this.snackBar.open('Incorrect username or password.', 'Try again!', {
         duration: 4000

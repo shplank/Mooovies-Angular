@@ -1,4 +1,5 @@
 <div class="navbar">
+  
   <div class="home-button">
     <div class="logo-button">
       <button mat-flat-button (click)="toFilms()" >
@@ -47,7 +48,7 @@
   
   <div id="profile-button">
     <button mat-button [matMenuTriggerFor]="profile">
-      <mat-icon class="profile-icon">person</mat-icon>
+      <mat-icon class="profile-icon" alt="profile">person</mat-icon>
     </button>
     <mat-menu #profile="matMenu">
       <button mat-menu-item (click)="toProfile()">view favorites</button>

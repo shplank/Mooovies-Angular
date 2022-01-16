@@ -10,12 +10,14 @@
 }
 
 button {
-  padding: 0 4px;
+  padding: 0 12px;
+  text-align: left;
 }
 
 .home-button {
   display: flex;
   flex-flow: row nowrap;
+  justify-content: flex-start;
 }
 
 .logo-button {
@@ -28,10 +30,14 @@ button {
 }
 
 .mooovies-button {
+  display: flex;
+  align-self: flex-start;
   padding-left: 0;
 }
 
 #mooovies {
+  display: flex;
+  flex-grow: 0;
   font-family: "Commissioner", sans-serif;
   font-size: 60;
   font-weight: 900;
@@ -43,6 +49,13 @@ button {
   display: flex;
   flex-flow: row nowrap;
   margin-top: 16px;
+}
+
+mat-expansion-panel-body {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .genres {
@@ -65,10 +78,18 @@ button {
   padding-right: 8px;
 }
 
+mat-menu-item {
+  padding-left: 12px;
+}
+
 @media all and (max-width: 688px) {
+  button {
+    padding: 0 8px;
+  }
   .home-button {
     flex-flow: row wrap;
     max-width: 132px;
+    max-height: 114px;
   }
   .genres-directors {
     margin-top: 0;
@@ -83,11 +104,11 @@ button {
     font-weight: 800;
   }
   .genres {
-    width: 120px;
+    width: 132px;
     margin: 4px 8px 4px 0;
   }
   .directors {
-    width: 160px;
+    width: 172px;
     margin: 4px 8px 4px 0;
   }
   #profile-button {

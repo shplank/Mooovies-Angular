@@ -49,20 +49,13 @@ export class EditProfileFormComponent implements OnInit {
 
   // This is the function responsible for sending the form inputs to the backend
   deleteProfile(): void {
-    this.fetchApiData.deleteProfile(this.user.Username).subscribe((response) => {
-    
-     this.dialogRef.close();
-     console.log(response);
-     localStorage.setItem('user', JSON.stringify(response));
-     this.snackBar.open('Profile deleted.', 'So long!', {
-      duration: 4000
-      });
-      this.router.navigate(['welcome']);
-    }, (response) => {
-      this.snackBar.open("Something's not right.", 'Try again!', {
-        duration: 4000
-      });
-    });
+    if (confirm('Are you sure you want to delete your profile?')) {
+      window.localStorage.clear();
+      this.dialogRef.close();
+      this.router.navigate(['welcome']).then(() => {window.location.reload()});
+      this.snackBar.open('Profile deleted.', 'Goodbye!', { duration: 4000 });
+      this.fetchApiData.deleteProfile(this.user.Username).subscribe(() => { });
+    }
   }
 
 }
