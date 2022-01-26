@@ -26,12 +26,24 @@ export class UserProfileComponent implements OnInit {
     this.getFavorites();
   }
 
+  /**
+  * makes api call for data about current user
+  * @function getUserInfo
+  * @param Username {any}
+  * @returns a user object in json format
+  */
   getUserInfo(): void {
     this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
         this.user = response;
       });
     }
 
+  /**
+  * makes api call for getting current user's favorites
+  * @function getFavorites
+  * @param Username {any}
+  * @returns an array of film objects in json format
+  */
   getFavorites(): void {
     this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
       this.favorites = response.Favorites;
@@ -40,6 +52,11 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+  * opens film details dialogue on film card click event
+  * @function openFilmDetails
+  * @param Title {string}
+  */
   openFilmDetails( Title: string ): void {
     this.dialog.open(FilmDetailsComponent, { 
       data: { Title },

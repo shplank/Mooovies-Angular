@@ -31,7 +31,13 @@ export class EditProfileFormComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+  * sends form inputs in api call to update user profile
+  * @function updateProfile
+  * @param Username {any}
+  * @param userData {object}
+  * @returns an updated user object in json format
+  */
   updateProfile(): void {
     this.fetchApiData.updateProfile(this.user.Username, this.userData).subscribe((response) => {
      this.dialogRef.close();
@@ -47,7 +53,10 @@ export class EditProfileFormComponent implements OnInit {
     });
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+  * makes api call to delete user profile and clear localStorage
+  * @function deleteProfile
+  */
   deleteProfile(): void {
     if (confirm('Are you sure you want to delete your profile?')) {
       window.localStorage.clear();

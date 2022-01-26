@@ -33,13 +33,23 @@ export class NavbarComponent implements OnInit {
     this.getAllDirectors();
   }
 
+  /**
+  * makes api call for list of data about all genres
+  * @function getAllGenres
+  * @returns array of genre objects in json format
+  */
   getAllGenres(): void {
     this.fetchApiData.getAllGenres().subscribe((response: any) => {
       this.genres = response;
         return this.genres;
     });
   }
-  
+
+  /**
+  * makes api call for list of data about all directors
+  * @function getAllDirectors
+  * @returns array of director objects in json format
+  */
   getAllDirectors(): void {
     this.fetchApiData.getAllDirectors().subscribe((response: any) => {
       this.directors = response; 
@@ -49,10 +59,19 @@ export class NavbarComponent implements OnInit {
 
   // functions attached to nav buttons
 
+  /**
+  * routes to film card view
+  * @function toFilms
+  */
   toFilms(): void {
     this.router.navigate(['films']);
   }
 
+  /**
+  * routes to genre view on genres dropdown click event
+  * @function toGenre
+  * @param _id {any}
+  */
   toGenre( _id: any ): void {
     localStorage.setItem('genreId', _id);
     console.log("GenreId:", _id);
@@ -60,6 +79,11 @@ export class NavbarComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
   }
 
+  /**
+  * routes to director view on directors dropdown click event
+  * @function toDirector
+  * @param _id {any}
+  */
   toDirector( _id: any ): void {
     localStorage.setItem('directorId', _id);
     console.log("directorId':", _id);
@@ -69,16 +93,28 @@ export class NavbarComponent implements OnInit {
 
   // functions under the user dropdown
 
+  /**
+  * routes to user profile (favorites) view
+  * @function toProfile
+  */
   toProfile(): void {
     this.router.navigate(['users']);
   }
 
+  /**
+  * opens profile edit dialogue
+  * @function openEdit
+  */
   openEdit(): void {
     this.dialog.open(EditProfileFormComponent, {
       width: '260px'
     });
   }
 
+  /**
+  * clears user from localStorage and routes to welcome view
+  * @function logOut
+  */
   logOut(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');

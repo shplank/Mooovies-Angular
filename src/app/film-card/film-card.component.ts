@@ -29,6 +29,11 @@ export class FilmCardComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+  * makes api call for data about all films
+  * @function getFilms
+  * @returns array of film objects in json format
+  */
   getFilms(): void {
     this.isLoading = true;
     this.fetchApiData.getAllFilms().subscribe((response: any) => {
@@ -39,6 +44,11 @@ export class FilmCardComponent implements OnInit {
     this.isLoading = false;
     }
 
+  /**
+  * makes api call for data about current user
+  * @function getUser
+  * @returns user object in json format including favorites
+  */
   getUser(): any {
       this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
         this.favorites = response.Favorites;
@@ -47,6 +57,11 @@ export class FilmCardComponent implements OnInit {
       });
     }
 
+  /**
+  * opens film details dialogue on film card click event
+  * @function openFilmDetails
+  * @param Title {string}
+  */
   openFilmDetails( Title: string ): void {
     this.dialog.open(FilmDetailsComponent, { 
       data: { Title },

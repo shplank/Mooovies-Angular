@@ -26,32 +26,48 @@ export class DirectorComponent implements OnInit {
     public snackBar: MatSnackBar,
     ) { this.router.routeReuseStrategy.shouldReuseRoute = () => false; }
 
-    ngOnInit(): void {
-      this.router.onSameUrlNavigation = 'reload';
-      this.getDirector();
-      this.getUser();
-    }
+  ngOnInit(): void {
+    this.router.onSameUrlNavigation = 'reload';
+    this.getDirector();
+    this.getUser();
+  }
 
-    getDirector(): any {
-      this.fetchApiData.getDirector(this.directorId).subscribe((response: any) => {
-          this.director = response;
-          console.log(this.director);
-          return this.director;
-        });
-      }
-  
-    getUser(): any {
-        this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
-          this.favorites = response.Favorites;
-          return this.favorites;
-        });
-      }
-  
-    openFilmDetails( Title: string ): void {
-      this.dialog.open(FilmDetailsComponent, { 
-        data: { Title },
+  /**
+  * api call for data about a single director
+  * @function getDirector
+  * @param directorId {string}
+  * @returns a director object in json format
+  */
+  getDirector(): any {
+    this.fetchApiData.getDirector(this.directorId).subscribe((response: any) => {
+        this.director = response;
+        console.log(this.director);
+        return this.director;
       });
     }
-  
+
+  /**
+  * makes api call for data about current user
+  * @function getUser
+  * @returns user object in json format including favorites
+  */
+  getUser(): any {
+      this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
+        this.favorites = response.Favorites;
+        return this.favorites;
+      });
+    }
+
+  /**
+  * opens film details dialogue on film card click event
+  * @function openFilmDetails
+  * @param Title {string}
+  */
+  openFilmDetails( Title: string ): void {
+    this.dialog.open(FilmDetailsComponent, { 
+      data: { Title },
+    });
   }
+  
+}
 

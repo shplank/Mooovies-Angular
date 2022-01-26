@@ -20,38 +20,54 @@ export class GenreComponent implements OnInit {
   favorites: any[] = this.user.Favorites;
   genreInfo: any;
 
-    constructor(
-      public router: Router,
-      public fetchApiData: FetchApiDataService,
-      public dialog: MatDialog,
-      public snackBar: MatSnackBar,
-      ) { this.router.routeReuseStrategy.shouldReuseRoute = () => false; }
-  
-    ngOnInit(): void {
-      this.router.onSameUrlNavigation = 'reload';
-      this.getGenre();
-      this.getUser();
-    }
+  constructor(
+    public router: Router,
+    public fetchApiData: FetchApiDataService,
+    public dialog: MatDialog,
+    public snackBar: MatSnackBar,
+    ) { this.router.routeReuseStrategy.shouldReuseRoute = () => false; }
 
-    getGenre(): any {
-      this.fetchApiData.getGenre(this.genreId).subscribe((response: any) => {
-          this.genre = response;
-          console.log(this.genre);
-          return this.genre;
-        });
-      }
-  
-    getUser(): any {
-        this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
-          this.favorites = response.Favorites;
-          return this.favorites;
-        });
-      }
-  
-    openFilmDetails( Title: string ): void {
-      this.dialog.open(FilmDetailsComponent, { 
-        data: { Title },
+  ngOnInit(): void {
+    this.router.onSameUrlNavigation = 'reload';
+    this.getGenre();
+    this.getUser();
+  }
+
+  /**
+  * api call for data about a single genre
+  * @function getGenre
+  * @param genreId {string}
+  * @returns a genre object in json format
+  */
+  getGenre(): any {
+    this.fetchApiData.getGenre(this.genreId).subscribe((response: any) => {
+        this.genre = response;
+        console.log(this.genre);
+        return this.genre;
       });
     }
-  
+
+  /**
+  * makes api call for data about current user
+  * @function getUser
+  * @returns user object in json format including favorites
+  */
+  getUser(): any {
+      this.fetchApiData.getUser(this.user.Username).subscribe((response: any) => {
+        this.favorites = response.Favorites;
+        return this.favorites;
+      });
+    }
+
+  /**
+  * opens film details dialogue on film card click event
+  * @function openFilmDetails
+  * @param Title {string}
+  */
+  openFilmDetails( Title: string ): void {
+    this.dialog.open(FilmDetailsComponent, { 
+      data: { Title },
+    });
   }
+  
+}

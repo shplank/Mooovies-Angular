@@ -24,10 +24,15 @@ import { Router } from '@angular/router';
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
+  /**
+  * sends form inputs in api call to update current user
+  * @function loginUser
+  * @param userData {object}
+  * @returns an updated user object in json format
+  */
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((response) => {
-  // Logic for a successful user login goes here!
+  // Logic for a successful user login goes here
     this.dialogRef.close(); // This will close the modal
     localStorage.setItem('token', response.token);
     localStorage.setItem('user', JSON.stringify(response.user));
