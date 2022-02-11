@@ -34,8 +34,7 @@ export class DirectorComponent implements OnInit {
 
   /**
   * api call for data about a single director
-  * @function getDirector
-  * @param directorId {string}
+  * @param [directorId] string
   * @returns a director object in json format
   */
   getDirector(): any {
@@ -48,7 +47,6 @@ export class DirectorComponent implements OnInit {
 
   /**
   * makes api call for data about current user
-  * @function getUser
   * @returns user object in json format including favorites
   */
   getUser(): any {
@@ -60,8 +58,8 @@ export class DirectorComponent implements OnInit {
 
   /**
   * opens film details dialogue on film card click event
-  * @function openFilmDetails
-  * @param Title {string}
+  * @event [click] on film card
+  * @param [Title] string
   */
   openFilmDetails( Title: string ): void {
     this.dialog.open(FilmDetailsComponent, { 
