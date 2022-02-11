@@ -33,9 +33,8 @@ export class EditProfileFormComponent implements OnInit {
 
   /**
   * sends form inputs in api call to update user profile
-  * @function updateProfile
-  * @param Username {any}
-  * @param userData {object}
+  * @param [Username] any
+  * @param [userData] object
   * @returns an updated user object in json format
   */
   updateProfile(): void {
@@ -55,7 +54,7 @@ export class EditProfileFormComponent implements OnInit {
 
   /**
   * makes api call to delete user profile and clear localStorage
-  * @function deleteProfile
+  * @event [click] on delete button
   */
   deleteProfile(): void {
     if (confirm('Are you sure you want to delete your profile?')) {
